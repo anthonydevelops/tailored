@@ -1,18 +1,24 @@
 
-# tailored
+# Tailored
 
-[![GitHub license](https://img.shields.io/badge/license-Apache%20license%202.0-blue.svg)](https://github.com/ligato/cn-infra/blob/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20license%202.0-blue.svg)](https://github.com/anthonydevelops/tailored/blob/master/LICENSE.md)
 
-Short project description here
+Tailored is full-stack web application for generating configurable front-end tooling integrations to make development a breeze. The user is able to select from available tools and generate working template code to be immediately usable in an application.
+
+## :wrench: Architecture
+
+<p align="center">
+    <img src="docs/img/Architecture.jpg" alt="Tailored architecture">
+</p>
 
 ## Installation
 
-Installation instructions here
+_TODO_
 
 ## Documentation
 
-GoDocs can be browsed [online](url-to-godoc-here).
+_TODO_
 
 ## Contributing
 
-If you are interested in contributing, please see the contribution guidelines.
+If you are interested in contributing, please see the contribution guidelines (_TODO_).
