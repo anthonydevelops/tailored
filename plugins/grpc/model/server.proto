@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package model;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "google/protobuf/empty.proto";
+option (gogoproto.messagename_all) = true;
+
+// Server message to be sent/received
+service Server {
+    // CreateProject creates a new user project
+    rpc CreateProject (Project) returns (google.protobuf.Empty);
+
+    // DeleteProject deletes a previously stored user project
+    rpc DeleteProject (ID) returns (google.protobuf.Empty);
+
+    // GetProject returns a user project
+    rpc GetProject (ID) returns (Project);
+}
+
+// Project holds the data of a stored project
+message Project {
+    int32 id = 1;
+    string name = 2;
+}
+
+// ID is passed to sort through existing projects
+message ID {
+    int32 id = 1;
+}

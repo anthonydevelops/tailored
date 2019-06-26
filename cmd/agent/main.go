@@ -14,8 +14,8 @@ import (
 	"github.com/ligato/cn-infra/servicelabel"
 )
 
-// tailor is a struct holding internal data for the tailored Agent
-type tailor struct {
+// Tailor is a struct holding internal data for the tailored Agent
+type Tailor struct {
 	GRPC         grpc.Server
 	KVStore      keyval.KvProtoPlugin
 	LogManager   *logmanager.Plugin
@@ -23,8 +23,8 @@ type tailor struct {
 }
 
 // New creates new tailor instance.
-func New() *tailor {
-	return &tailor{
+func New() *Tailor {
+	return &Tailor{
 		GRPC:         &grpc.DefaultPlugin,
 		KVStore:      &etcd.DefaultPlugin,
 		LogManager:   &logmanager.DefaultPlugin,
@@ -33,29 +33,30 @@ func New() *tailor {
 }
 
 // Init initializes main plugin.
-func (pr *tailor) Init() error {
+func (pr *Tailor) Init() error {
 	return nil
 }
 
-func (pr *tailor) AfterInit() error {
+// AfterInit executes operations after the init function.
+func (pr *Tailor) AfterInit() error {
 	resync.DefaultPlugin.DoResync()
 	return nil
 }
 
 // Close can be used to close used resources.
-func (pr *tailor) Close() error {
+func (pr *Tailor) Close() error {
 	return nil
 }
 
 // String returns name of the plugin.
-func (pr *tailor) String() string {
+func (pr *Tailor) String() string {
 	return "tailor"
 }
 
 func main() {
-	tailor := New()
+	Tailor := New()
 
-	a := agent.NewAgent(agent.AllPlugins(tailor))
+	a := agent.NewAgent(agent.AllPlugins(Tailor))
 
 	if err := a.Run(); err != nil {
 		log.DefaultLogger().Fatal(err)

@@ -1,14 +1,14 @@
+//go:generate protoc --proto_path=model --proto_path=$GOPATH/src --gogo_out=model ./model/server.proto
+
 package grpc
 
 import (
 	"github.com/ligato/cn-infra/infra"
 	"github.com/ligato/cn-infra/logging"
-	// todo: add any necessary imports for your plugin
 )
 
 // RegisterFlags registers command line flags.
 func RegisterFlags() {
-	// todo: add command line flags here if needed
 }
 
 func init() {
@@ -23,7 +23,6 @@ type Plugin struct {
 // Deps groups the dependencies of the Rest Plugin.
 type Deps struct {
 	infra.PluginDeps
-	// todo: add any additional dependencies here
 }
 
 // Init initializes the Plugin
