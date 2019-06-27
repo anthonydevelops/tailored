@@ -3,6 +3,7 @@
 package grpc
 
 import (
+	"github.com/anthonydevelops/tailored/plugins/grpc/model"
 	"github.com/ligato/cn-infra/infra"
 	"github.com/ligato/cn-infra/logging"
 	"github.com/ligato/cn-infra/rpc/grpc"
@@ -19,6 +20,7 @@ func init() {
 // Plugin holds the internal data structures of the Rest Plugin
 type Plugin struct {
 	Deps
+	Log  logging.PluginLogger
 	GRPC grpc.Server
 }
 
@@ -27,14 +29,15 @@ type Deps struct {
 	infra.PluginDeps
 }
 
-// GrpcService implements grpc server interface
-type GrpcService struct{}
+// Service implements grpc server interface
+type Service struct{}
 
 // Init initializes the Plugin
 func (p *Plugin) Init() error {
 	p.Log.SetLevel(logging.DebugLevel)
 
 	// Register server
+	model.RegisterKVServer(p.GRPC.GetServer(), &Service{})
 	return nil
 }
 

@@ -14,7 +14,8 @@ var DefaultPlugin = *NewPlugin()
 
 // NewPlugin creates a new Plugin with the provides Options
 func NewPlugin(opts ...Option) *Plugin {
-	p.PluginName = "GRPC"
+	p := &Plugin{}
+
 	grpcConf := grpc.NewPlugin(
 		grpc.UseHTTP(&rest.DefaultPlugin),
 		grpc.UseConf(grpc.Config{
@@ -22,10 +23,8 @@ func NewPlugin(opts ...Option) *Plugin {
 		}),
 	)
 
-	p := &Plugin{
-		Log:  logging.PluginLogger,
-		GRPC: grpcConf,
-	}
+	p.PluginName = "GRPC"
+	p.GRPC = grpcConf
 
 	for _, o := range opts {
 		o(p)
