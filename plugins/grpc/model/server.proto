@@ -1,22 +1,26 @@
 syntax = "proto3";
-
 package model;
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
-import "google/protobuf/empty.proto";
-option (gogoproto.messagename_all) = true;
 
-// Server message to be sent/received
-service Server {
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.goproto_getters_all) = false;
+
+// KV message to be sent/received
+service KV {
     // CreateProject creates a new user project
-    rpc CreateProject (Project) returns (google.protobuf.Empty);
+    rpc CreateProject (Project) returns (Empty) {}
 
     // DeleteProject deletes a previously stored user project
-    rpc DeleteProject (ID) returns (google.protobuf.Empty);
+    rpc DeleteProject (ID) returns (Empty) {}
 
     // GetProject returns a user project
-    rpc GetProject (ID) returns (Project);
+    rpc GetProject (ID) returns (Project) {}
 }
+
+message Empty {}
 
 // Project holds the data of a stored project
 message Project {

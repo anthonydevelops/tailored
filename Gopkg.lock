@@ -75,14 +75,13 @@
   version = "v1.2.1"
 
 [[projects]]
-  digest = "1:2624ed1a47149456f5e9bb48ae8fabf66a8b772d0a5430abba34cb527c4830e3"
+  digest = "1:239c4c7fd2159585454003d9be7207167970194216193a8a210b8d29576f19c9"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
     "ptypes",
     "ptypes/any",
     "ptypes/duration",
-    "ptypes/empty",
     "ptypes/timestamp",
   ]
   pruneopts = "UT"
@@ -331,7 +330,6 @@
   input-imports = [
     "github.com/gogo/protobuf/gogoproto",
     "github.com/gogo/protobuf/proto",
-    "github.com/golang/protobuf/ptypes/empty",
     "github.com/ligato/cn-infra/agent",
     "github.com/ligato/cn-infra/datasync/resync",
     "github.com/ligato/cn-infra/db/keyval",
@@ -341,7 +339,9 @@
     "github.com/ligato/cn-infra/logging/logmanager",
     "github.com/ligato/cn-infra/logging/logrus",
     "github.com/ligato/cn-infra/rpc/grpc",
+    "github.com/ligato/cn-infra/rpc/rest",
     "github.com/ligato/cn-infra/servicelabel",
+    "google.golang.org/grpc",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

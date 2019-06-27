@@ -23,7 +23,6 @@
 #   non-go = false
 #   go-tests = true
 #   unused-packages = true
-
 [[constraint]]
   name = "github.com/ligato/cn-infra"
   version = "2.1.0"

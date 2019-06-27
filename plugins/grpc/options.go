@@ -3,6 +3,9 @@ package grpc
 import (
 	"log"
 
+	"github.com/ligato/cn-infra/rpc/grpc"
+	"github.com/ligato/cn-infra/rpc/rest"
+
 	"github.com/ligato/cn-infra/logging"
 )
 
@@ -11,10 +14,18 @@ var DefaultPlugin = *NewPlugin()
 
 // NewPlugin creates a new Plugin with the provides Options
 func NewPlugin(opts ...Option) *Plugin {
-	p := &Plugin{}
-
 	p.PluginName = "GRPC"
-	// todo: initialize any other pluign Deps here, if applicable
+	grpcConf := grpc.NewPlugin(
+		grpc.UseHTTP(&rest.DefaultPlugin),
+		grpc.UseConf(grpc.Config{
+			Endpoint: "localhost:9191",
+		}),
+	)
+
+	p := &Plugin{
+		Log:  logging.PluginLogger,
+		GRPC: grpcConf,
+	}
 
 	for _, o := range opts {
 		o(p)
